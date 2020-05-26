@@ -5,7 +5,7 @@ steps:
   args:
   - run
   - --filename=local.yaml
-  - --image=mcr.microsoft.com/mssql/server
+  - --image=mcr.microsoft.com/mssql/server:2017-latest
   - --location=us-east1-b
   - --output=/tmp/outputdev
   - --location=us-east1-b
