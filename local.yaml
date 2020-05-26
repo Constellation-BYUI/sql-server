@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sql-server
-        image: mcr.microsoft.com/mssql/server
+        image: gcr.io/$PROJECT_ID/sql-server
         ports:
         - containerPort: 1433
           name: sql-server
