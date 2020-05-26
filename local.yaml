@@ -31,19 +31,19 @@ spec:
               key: SA_PASSWORD
         resources:
           limits:
-            cpu: "2"
-            memory: "3000Mi"
+            cpu: ".5"
+            memory: "500Mi"
           requests:
-            cpu: "1"
-            memory: "2000Mi"
+            cpu: ".5"
+            memory: "500Mi"
         volumeMounts:
         - name: sql-server-local
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
             port: 1433
-          initialDelaySeconds: 3
-          periodSeconds: 3
+          initialDelaySeconds: 300
+          periodSeconds: 30
         securityContext:
           privileged: true
   volumeClaimTemplates:
