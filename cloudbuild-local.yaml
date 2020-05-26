@@ -1,28 +1,11 @@
 steps:
-# This step builds the container image.
-- name: 'gcr.io/cloud-builders/docker'
-  id: Build
-  args:
-  - 'build'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA'
-  - '.'
-
-# This step pushes the image to Container Registry
-# The PROJECT_ID and SHORT_SHA variables are automatically
-# replaced by Cloud Build.
-- name: 'gcr.io/cloud-builders/docker'
-  id: Push
-  args:
-  - 'push'
-  - 'gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA'
 
 # This step deploys the dev application in Kubernetes
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
   - --filename=local.yaml
-  - --image=gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA
+  - --image=mcr.microsoft.com/mssql/server
   - --location=us-east1-b
   - --output=/tmp/outputdev
   - --location=us-east1-b
