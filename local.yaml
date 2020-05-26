@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: sql-server-dev
+  name: sql-server-local
 spec:
-  serviceName: sql-server-dev
+  serviceName: sql-server-local
   replicas: 1
   selector:
     matchLabels:
-      app: sql-server-dev
+      app: sql-server-local
   template:
     metadata:
       labels:
-        app: sql-server-dev
+        app: sql-server-local
     spec:
       containers:
-      - name: sql-server-dev
+      - name: sql-server
         image: gcr.io/constellation-275522/sql-server
         ports:
         - containerPort: 1433
-          name: sql-server-dev
+          name: sql-server
         env:
         - name: MSSQL_PID
           value: "Express"
@@ -27,7 +27,7 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: sql-server-dev
+              name: sql-server
               key: SA_PASSWORD
         resources:
           limits:
@@ -37,7 +37,7 @@ spec:
             cpu: "1"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-dev
+        - name: sql-server-local
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -48,7 +48,7 @@ spec:
           privileged: true
   volumeClaimTemplates:
   - metadata:
-      name: sql-server-dev
+      name: sql-server-local
     spec:
       accessModes:
         - ReadWriteOnce
@@ -59,13 +59,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sql-server-dev
+  name: sql-server-local
   labels:
-    app: sql-server-dev
+    app: sql-server-local
 spec:
   ports:
   - port: 1433
-    name: sql-server-dev
-  clusterIP: None
+    name: sql-server-local
   selector:
-    app: sql-server-dev    
+    app: sql-server-local
+  type: LoadBalancer
+   

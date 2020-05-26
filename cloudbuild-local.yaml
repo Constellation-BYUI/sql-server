@@ -21,7 +21,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
-  - --filename=dev.yaml
+  - --filename=local.yaml
   - --image=gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA
   - --location=us-east1-b
   - --output=/tmp/outputdev
@@ -34,7 +34,7 @@ steps:
   - builds
   - submit
   - --config
-  - cloudbuild-stage.yaml
+  - cloudbuild-dev.yaml
   - --substitutions
   - _SHORT_SHA=$SHORT_SHA
   - .
