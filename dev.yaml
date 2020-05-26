@@ -37,8 +37,8 @@ spec:
             cpu: "1"
             memory: "2000Mi"
         volumeMounts:
-        - name: nfs
-          mountPath: /nfsshare
+        - name: sql-server
+          mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
             port: 1433
