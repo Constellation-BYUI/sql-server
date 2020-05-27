@@ -13,6 +13,8 @@ spec:
       labels:
         app: sql-server-local
     spec:
+      updateStrategy: 
+        type: RollingUpdate
       securityContext:
         runAsUser: 10001
         runAsGroup: 10001
