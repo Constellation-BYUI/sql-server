@@ -50,16 +50,21 @@ spec:
           periodSeconds: 30
         securityContext:
           privileged: true
-  volumeClaimTemplates:
-  - metadata:
-      name: sql-server-local
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 20Gi
----          
+  volumes:
+    - name: sql-server-local
+    persistentVolumeCLaim:
+      claimName: mssql-data
+---
+apiVersion: v1
+kind: persistentVolumeCLaimmetadata:
+  name: sql-server-local
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi            
+---
 apiVersion: v1
 kind: Service
 metadata:
