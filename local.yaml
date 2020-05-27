@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: sql-server-local
 spec:
-  serviceName: sql-server-local
   replicas: 1
   selector:
     matchLabels:
@@ -50,10 +49,10 @@ spec:
           periodSeconds: 30
         securityContext:
           privileged: true
-  volumes:
-  - name: sql-server-local
-    persistentVolumeCLaim:
-      claimName: mssql-data
+      volumes:
+      - name: sql-server-local
+        persistentVolumeCLaim:
+          claimName: mssql-data
 ---
 apiVersion: v1
 kind: persistentVolumeCLaimmetadata:
