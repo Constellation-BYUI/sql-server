@@ -51,7 +51,7 @@ spec:
           privileged: true
       volumes:
       - name: sql-server-local
-        persistentVolumeCLaim:
+        persistentVolumeClaim:
           claimName: mssql-data
 ---
 apiVersion: v1
