@@ -52,7 +52,7 @@ spec:
       volumes:
       - name: sql-server-local
         persistentVolumeClaim:
-          claimName: mssql-data
+          claimName: sql-server-local
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
