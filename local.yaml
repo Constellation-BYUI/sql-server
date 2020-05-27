@@ -51,7 +51,7 @@ spec:
         securityContext:
           privileged: true
   volumes:
-    - name: sql-server-local
+  - name: sql-server-local
     persistentVolumeCLaim:
       claimName: mssql-data
 ---
