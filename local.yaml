@@ -55,7 +55,8 @@ spec:
           claimName: mssql-data
 ---
 apiVersion: v1
-kind: persistentVolumeCLaimmetadata:
+kind: persistentVolumeClaim
+metadata:
   name: sql-server-local
 spec:
   accessModes:
