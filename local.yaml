@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sql-server
-        image: gcr.io/potent-galaxy-274115/sql-server
+        image: gcr.io/constellation-275522/sql-server
         ports:
         - containerPort: 1433
           name: sql-server

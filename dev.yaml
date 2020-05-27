@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sql-server-dev
-        image: mcr.microsoft.com/mssql/server:2017-latest
+        image: gcr.io/constellation-275522/sql-server
         ports:
         - containerPort: 1433
           name: sql-server-dev
