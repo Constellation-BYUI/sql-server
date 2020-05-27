@@ -31,11 +31,11 @@ spec:
               key: SA_PASSWORD
         resources:
           limits:
-            cpu: "2"
-            memory: "3000Mi"
+            cpu: ".9"
+            memory: "1000Mi"
           requests:
-            cpu: "1"
-            memory: "2000Mi"
+            cpu: ".9"
+            memory: "1000Mi"
         volumeMounts:
         - name: sql-server-dev
           mountPath: /var/opt/mssql

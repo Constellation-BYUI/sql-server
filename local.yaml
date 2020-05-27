@@ -32,10 +32,10 @@ spec:
         resources:
           limits:
             cpu: ".9"
-            memory: "2000Mi"
+            memory: "1000Mi"
           requests:
             cpu: ".9"
-            memory: "2000Mi"
+            memory: "1000Mi"
         volumeMounts:
         - name: sql-server-local
           mountPath: /var/opt/mssql
