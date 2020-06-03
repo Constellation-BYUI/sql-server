@@ -40,7 +40,7 @@ spec:
             cpu: ".9"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-local2
+        - name: sql-server-local
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -50,9 +50,9 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-local2
+      - name: sql-server-local
         persistentVolumeClaim:
-          claimName: sql-server-local2
+          claimName: sql-server-local
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -64,21 +64,6 @@ spec:
   resources:
     requests:
       storage: 15Gi            
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sql-server-local2
-spec:
-  dataSource:
-    name: sql-server-local
-    kind: PersistemtVolumeClaim
-    apiGroup: ""
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 15Gi
 ---
 apiVersion: v1
 kind: Service
