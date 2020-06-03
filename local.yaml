@@ -50,9 +50,9 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-local
+      - name: sql-server-local2
         persistentVolumeClaim:
-          claimName: sql-server-local
+          claimName: sql-server-local2
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -60,10 +60,25 @@ metadata:
   name: sql-server-local
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 15Gi            
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sql-server-local2
+spec:
+  dataSource:
+    name: sql-server-local
+    kind: PersistemtVolumeClaim
+    apiGroup: ""
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 15Gi
 ---
 apiVersion: v1
 kind: Service
