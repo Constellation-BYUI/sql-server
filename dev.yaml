@@ -1,9 +1,8 @@
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: apps/v1beta1
+kind: Deployment
 metadata:
   name: sql-server-dev
 spec:
-  serviceName: sql-server-dev
   replicas: 1
   selector:
     matchLabels:
@@ -13,12 +12,16 @@ spec:
       labels:
         app: sql-server-dev
     spec:
+      securityContext:
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
       containers:
-      - name: sql-server-dev
+      - name: sql-server
         image: gcr.io/constellation-275522/sql-server
         ports:
         - containerPort: 1433
-          name: sql-server-dev
+          name: sql-server
         env:
         - name: MSSQL_PID
           value: "Express"
@@ -27,35 +30,41 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: sql-server-dev
+              name: sql-server
               key: SA_PASSWORD
         resources:
           limits:
             cpu: ".9"
-            memory: "1000Mi"
+            memory: "2000Mi"
           requests:
             cpu: ".9"
-            memory: "1000Mi"
+            memory: "2000Mi"
         volumeMounts:
         - name: sql-server-dev
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
             port: 1433
-          initialDelaySeconds: 3
-          periodSeconds: 3
+          initialDelaySeconds: 300
+          periodSeconds: 30
         securityContext:
           privileged: true
-  volumeClaimTemplates:
-  - metadata:
-      name: sql-server-dev
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 10Gi
----          
+      volumes:
+      - name: sql-server-dev
+        persistentVolumeClaim:
+          claimName: sql-server-dev
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sql-server-dev
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 15Gi            
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -66,6 +75,7 @@ spec:
   ports:
   - port: 1433
     name: sql-server-dev
-  clusterIP: None
   selector:
-    app: sql-server-dev    
+    app: sql-server-dev
+
+   
