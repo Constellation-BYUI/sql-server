@@ -17,8 +17,18 @@ steps:
     - 'push'
     - 'gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA'
   
-  # This step deploys the dev application in Kubernetes
+  # This step stops the database pod
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Stop Pod
+    args:
+      - 'scale'
+      - 'deploy'
+      - 'sql-server-local'
+      - '--replicas=0'
+  
+  # This step deploys to the local environment
   - name: 'gcr.io/cloud-builders/gke-deploy'
+    id: Deploy Local
     args:
     - run
     - --filename=local.yaml
@@ -27,9 +37,19 @@ steps:
     - --output=/tmp/outputdev
     - --location=us-east1-b
     - --cluster=cluster-1  
+
+  # This step scales up the database pod
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Scale Pod
+    args:
+      - 'scale'
+      - 'deploy'
+      - 'sql-server-local'
+      - '--replicas=1'    
   
-  # This step deploys the stage application in Kubernetes
+  # This step deploys to the dev environment 
   - name: 'gcr.io/cloud-builders/gcloud'
+    id: Trigger Dev
     args:
     - builds
     - submit
