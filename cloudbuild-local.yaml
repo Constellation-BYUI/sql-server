@@ -25,6 +25,9 @@ steps:
       - 'deploy'
       - 'sql-server-local'
       - '--replicas=0'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
   
   # This step deploys to the local environment
   - name: 'gcr.io/cloud-builders/gke-deploy'
@@ -46,7 +49,10 @@ steps:
       - 'deploy'
       - 'sql-server-local'
       - '--replicas=1'    
-  
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+    
   # This step deploys to the dev environment 
   - name: 'gcr.io/cloud-builders/gcloud'
     id: Trigger Dev
