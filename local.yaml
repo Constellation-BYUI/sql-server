@@ -60,7 +60,7 @@ metadata:
   name: sql-server-local
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 15Gi            
