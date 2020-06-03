@@ -40,7 +40,7 @@ spec:
             cpu: ".9"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-local
+        - name: sql-server-local2
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
