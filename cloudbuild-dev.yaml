@@ -1,7 +1,20 @@
 steps:
 
-# This step deploys the dev application in Kubernetes
+# This step stops the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Stop Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-dev'
+    - '--replicas=0'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'  
+
+# This step deploys to the Dev environment
 - name: 'gcr.io/cloud-builders/gke-deploy'
+  id: Deploy Dev
   args:
   - run
   - --filename=dev.yaml
@@ -11,8 +24,21 @@ steps:
   - --location=us-east1-b
   - --cluster=cluster-1  
 
-# This step deploys the stage application in Kubernetes
+# This step starts the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Scale Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-dev'
+    - '--replicas=1'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'    
+
+# This step triggers the Stage deploy
 - name: 'gcr.io/cloud-builders/gcloud'
+  id: Trigger Stage
   args:
   - builds
   - submit
