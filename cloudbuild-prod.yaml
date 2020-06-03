@@ -1,6 +1,19 @@
 steps:
 
-# This step deploys the prod application in Kubernetes
+# This step stops the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Stop Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-prod'
+    - '--replicas=0'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'    
+
+
+# This step deploys to the Prod environment
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
@@ -10,6 +23,16 @@ steps:
   - --location=us-east1-b
   - --cluster=cluster-1  
 
-
+# This step stops the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Scale Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-prod'
+    - '--replicas=1'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'  
 
 
