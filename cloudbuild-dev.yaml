@@ -45,5 +45,5 @@ steps:
   - --config
   - cloudbuild-stage.yaml
   - --substitutions
-  - _SHORT_SHA=$SHORT_SHA
+  - _SHORT_SHA=$_SHORT_SHA
   - .

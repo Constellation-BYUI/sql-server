@@ -23,7 +23,7 @@ steps:
   - --location=us-east1-b
   - --cluster=cluster-1  
 
-# This step stops the database pod
+# This step starts the database pod
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Scale Pod
   args:
