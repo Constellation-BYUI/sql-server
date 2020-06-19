@@ -1,6 +1,6 @@
 steps:
 
-This step stops the database pod
+# This step stops the database pod
 - name: 'gcr.io/cloud-builders/kubectl'
   id: Stop Pod
   args:
@@ -13,7 +13,7 @@ This step stops the database pod
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'    
 
 
-This step deploys to the Prod environment
+# This step deploys to the Prod environment
 - name: 'gcr.io/cloud-builders/gke-deploy'
   args:
   - run
