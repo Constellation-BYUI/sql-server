@@ -81,16 +81,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sql-server-dev
+  name: sql-server-loadbalancer-dev
   annotations:
     cloud.google.com/load-balancer-type: "Internal"
   labels:
-    app: sql-server-dev
+    app: sql-server-loadbalancer-dev
 spec:
   ports:
   - port: 1433
-    name: sql-server-dev
+    name: sql-server-loadbalancer-dev
   selector:
-    app: sql-server-dev
+    app: sql-server-loadbalancer-dev
   type: LoadBalancer  
    
