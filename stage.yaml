@@ -69,6 +69,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sql-server-stage
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
   labels:
     app: sql-server-stage
 spec:
@@ -77,20 +79,5 @@ spec:
     name: sql-server-stage
   selector:
     app: sql-server-stage
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sql-server-loadbalancer-stage
-  annotations:
-    cloud.google.com/load-balancer-type: "Internal"
-  labels:
-    app: sql-server-loadbalancer-stage
-spec:
-  ports:
-  - port: 1433
-    name: sql-server-loadbalancer-stage
-  selector:
-    app: sql-server-loadbalancer-stage
   type: LoadBalancer  
    
