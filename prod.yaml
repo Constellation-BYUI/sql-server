@@ -77,5 +77,20 @@ spec:
     name: sql-server-prod
   selector:
     app: sql-server-prod
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sql-server-prod
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  labels:
+    app: sql-server-prod
+spec:
+  ports:
+  - port: 1433
+    name: sql-server-prod
+  selector:
+    app: sql-server-prod
+  type: LoadBalancer  
    
