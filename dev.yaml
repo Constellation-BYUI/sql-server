@@ -77,5 +77,20 @@ spec:
     name: sql-server-dev
   selector:
     app: sql-server-dev
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sql-server-dev
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  labels:
+    app: sql-server-dev
+spec:
+  ports:
+  - port: 1433
+    name: sql-server-dev
+  selector:
+    app: sql-server-dev
+  type: LoadBalancer  
    
