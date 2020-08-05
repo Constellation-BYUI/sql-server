@@ -1,0 +1,49 @@
+steps:
+
+# This step stops the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Stop Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-dev'
+    - '--replicas=0'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'  
+
+# This step deploys to the Dev environment
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  id: Deploy Dev
+  args:
+  - run
+  - --filename=sql-server-location-test.yaml
+  - --image=gcr.io/$PROJECT_ID/sql-server:$_SHORT_SHA
+  - --location=us-east1-b
+  - --output=/tmp/outputdev
+  - --location=us-east1-b
+  - --cluster=cluster-1  
+
+# This step starts the database pod
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Scale Pod
+  args:
+    - 'scale'
+    - 'deploy'
+    - 'sql-server-dev'
+    - '--replicas=1'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'    
+
+# This step triggers the Stage deploy
+- name: 'gcr.io/cloud-builders/gcloud'
+  id: Trigger Stage
+  args:
+  - builds
+  - submit
+  - --config
+  - cloudbuild-stage.yaml
+  - --substitutions
+  - _SHORT_SHA=$_SHORT_SHA
+  - .
