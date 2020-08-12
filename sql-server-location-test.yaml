@@ -39,6 +39,9 @@ spec:
           requests:
             cpu: ".9"
             memory: "2000Mi"
+          volumeMounts:
+          - name: sql-server-location-test
+            mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
             port: 1433
