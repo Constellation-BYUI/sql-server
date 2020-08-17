@@ -4,7 +4,6 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Remove log
     args:
-      - kubectl
       - exec
       - -it
       - $(kubectl 
@@ -26,7 +25,6 @@ steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Recreate directory
     args:
-      - kubectl
       - exec
       - -it
       - $(kubectl 
