@@ -1,47 +1,27 @@
 steps:
   
-  # Remove log files from local
+  # Remove log files from prod 
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Remove log
+    entrypoint: 'bash'
     args:
-      - kubectl
-      - exec
-      - -it
-      - $(kubectl 
-      - get
-      - pod 
-      - --selector=app='sql-server-local'
-      - -o 
-      - jsonpath 
-      - --template='{range.items[*]}{.metadata.name}{"\n"}{end}') 
-      - -- 
-      - rm 
-      - -r 
-      - /var/opt/mssql/log/
+      - delete-log.sh
+      - sql-server-prod
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
-  # Remove log files from local
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Recreate directory
+  # Recreates Log Directory in Prod
+ - name: 'gcr.io/cloud-builders/kubectl'
+    id: Recreate log
+    entrypoint: 'bash'
     args:
-      - kubectl
-      - exec
-      - -it
-      - $(kubectl 
-      - get
-      - pod 
-      - --selector=app='sql-server-local'
-      - -o 
-      - jsonpath 
-      - --template='{range.items[*]}{.metadata.name}{"\n"}{end}') 
-      - -- 
-      - mkdir
-      - /var/opt/mssql/log
+      - recreate-log.sh
+      - sql-server-prod
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
-  
+
+
 
   
