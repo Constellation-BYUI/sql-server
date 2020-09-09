@@ -1,0 +1,177 @@
+    1  kubectl
+    2  man kubectl
+    3  pwd
+    4  ls
+    5  vim README-cloudshell.txt
+    6  gcloud help
+    7  kubectl get
+    8  kubectl api-resources
+    9  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   10  ls
+   11  kubectl
+   12  kubectl get pods
+   13  kubectl get containers
+   14  kubectl describe master
+   15  kubectl get nodes
+   16  kubectl get secrets
+   17  kubectl get secret dev-sql-server
+   18  kubectl get secret dev-sql-server -o yaml
+   19  kubectl get pods
+   20  df -k
+   21  kubectl exec sql-server-dev-7b58fdb98-52wks df -k
+   22  kubectl exec sql-server-dev-7b58fdb98-52wks --df -k
+   23  kubectl exec -it sql-server-dev-7b58fdb98-52wks /bin/sh
+   24  history
+   25  history > history.txt
+   26  cat history.txt
+   27  vim history.txt
+   28  exit
+   29  help
+   30  gcloud help
+   31  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   32  POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') && kubectl exec $POD -- rm -r /var/opt/mssql/log/
+   33  kubectl get pods
+   34  cloudshell_open --repo_url "https://github.com/GoogleCloudPlatform/cloud-shell-tutorials" --page "editor" --tutorial "cloudsdk/tutorial.md"
+   35  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   36  kubectl get services
+   37  kubectl get pods
+   38  kubectl exec -it sql-server-local-644fd5d9d6-2ld7r /bin/sh
+   39  kubectl exec -it sql-server-local-754c886544-kgh4j /bin/sh
+   40  kubectl exec -it sql-server-dev-7b58fdb98-52wks /bin/sh
+   41  kubectl exec sql-server-local-754c886544-kgh4j -it /bin/sh
+   42  kubectl exec sql-server-local-754c886544-kgh4j -it --/bin/sh
+   43  kubectl exec sql-server-local-754c886544-kgh4j --it /bin/sh
+   44  kubectl exec --help
+   45  kubectl get pods
+   46  kubectl exec sql-server-local-754c886544-kgh4j
+   47  kubectl exec sql-server-local-754c886544-kgh4j /bin/sh
+   48  kubectl exec -it sql-server-local-644fd5d9d6-2ld7r /bin/sh
+   49  kubectl exec -it sql-server-local-754c886544-kgh4j /bin/sh
+   50  POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') && kubectl exec $POD -- rm -r /var/opt/mssql/log/
+   51  kubectl get secret dev-sql-server -o yaml
+   52  df -k
+   53  kubectl exec sql-server-dev-7b58fdb98-52wks df -k
+   54  kubectl exec sql-server-dev-7b58fdb98-52wks --df -k
+   55  kubectl exec -it sql-server-dev-7b58fdb98-52wks /bin/sh
+   56  kubectl kubectl exec sql-server-local-754c886544-kgh4j -- -it /bin/sh
+   57  kubectl exec sql-server-local-754c886544-kgh4j -- -it /bin/sh
+   58  kubectl exec sql-server-local -- -it /bin/sh
+   59  kubectl get pods
+   60  kubectl exec sql-server-dev-5d885dc9fb-bvwc2 -- -it /bin/sh
+   61  kubectl exec sql-server-dev-5d885dc9fb-bvwc2 -it /bin/sh
+   62  exit
+   63  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   64   gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522  && kubectl exec sql-server-local-754c886544-kgh4j -c sql-server -- ls
+   65  kubectl desc pod
+   66  kubectl describe pods
+   67  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   68  kubectl edit statefulset sql-server-local
+   69  kubectl edit deploy sql-server-local
+   70  kubectl scale deploy sql-server-loca --replicas=0
+   71  kubectl scale deploy sql-server-local --replicas=0
+   72  kubectl scale deploy sql-server-local --replicas=1
+   73  POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') && kubectl exec $POD -- rm -r /var/opt/mssql/log/
+   74  kubectl get pods
+   75  kubectl exec sql-server-local -it /bin/sh
+   76  exit
+   77  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   78  kubectl get pods
+   79  tmux
+   80  history
+   81  history > history.txt
+   82  kubectl edit deploy sql-server-local
+   83  kubectl get pods
+   84  kubectl describe pod sql-server-local
+   85  kubectl describe pod sql-server-local-54bb7976dd-dt7kk
+   86  kubectl delete pod sql-server-local-8674fd8ff4-s8npw
+   87  kubectl describe pod sql-server-local-54bb7976dd-dt7kk
+   88  clear
+   89  kubectl describe pod sql-server-local-54bb7976dd-dt7kk
+   90  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+   91  kubectl exec -it POD=$(kubectl get pod --selector=app="sql-server-local" -o jsonpath --template="{range .items[*]}{.metadata.name}{"\n"}{end}") && kubectl exec $POD -- mkdir /var/opt/mssql/log/
+   92  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') && kubectl exec $POD -- mkdir /var/opt/mssql/log/
+   93  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') $POD -- mkdir /var/opt/mssql/log/
+   94  kubectl get pods
+   95  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') mkdir /var/opt/mssql/log/
+   96  kubectl exec -it (kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') mkdir /var/opt/mssql/log/
+   97  kubectl exec -it kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}' mkdir /var/opt/mssql/log/
+   98  kubectl exec -it (kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') mkdir /var/opt/mssql/log/
+   99  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') mkdir /var/opt/mssql/log/
+  100  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  101  clear
+  102  kubectl exec -it kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}' -- mkdir /var/opt/mssql/log/
+  103  kubectl exec -it POD=$(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  104  kubectl get pods
+  105  kubectl exec -it POD=(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  106  kubectl exec -it $(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  107  kubectl exec -it $(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') --  rm -r /var/opt/mssql/log/
+  108  kubectl exec -it sql-server-local-74f55b74f9-5dpt6 /bin/sh
+  109  kubectl exec -it $(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range .items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  110  kubectl exec -it sql-server-local-74f55b74f9-5dpt6 /bin/sh
+  111  kubectl exec -it $(kubectl get pod --selector=app='sql-server-local' -o jsonpath --template='{range.items[*]}{.metadata.name}{"\n"}{end}') -- mkdir /var/opt/mssql/log/
+  112  exit
+  113  kubectl get pods
+  114  git clone https://github.com/Constellation-BYUI/sql-server.git
+  115  gcloud builds submit --config clear-log.yaml
+  116  ls
+  117  cd sql-server/
+  118  ls
+  119  gcloud builds submit --config clear-log.yaml
+  120  vim clear-log.yaml 
+  121  gcloud builds submit --config clear-log.yaml
+  122  vim clear-log.yaml 
+  123  ls
+  124  vim cloudbuild-local.yaml 
+  125  gcloud builds submit --config clear-log.yaml
+  126  vim cloudbuild-local.yaml 
+  127  vim clear-log.yaml 
+  128  gcloud builds submit --config clear-log.yaml
+  129  vim clear-log.yaml 
+  130  gcloud builds submit --config clear-log.yaml
+  131  vim clear-log.yaml 
+  132  exit
+  133  ls
+  134  cd sql-server/
+  135  ls
+  136  exit
+  137  gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project constellation-275522
+  138  ls
+  139  cd sql-server/
+  140  ls
+  141  vim clear-log.yaml 
+  142  POD_INDEX=1 kubectl exec -p             `kubectl get pod -l <labels> \
+                             -t "{{ with index .items ${POD_INDEX:-0} }}{{ .metadata.name }}{{ end }}"` -- ls
+  143  POD_INDEX=1 kubectl exec -p `kubectl get pod -l "app=sql-server-prod" -t "{{ with index .items ${POD_INDEX:-0} }}{{ .metadata.name }}{{ end }}"` -- ls
+  144  POD_INDEX=1 kubectl exec `kubectl get pod -l "app=sql-server-prod" --template "{{ with index .items ${POD_INDEX:-0} }}{{ .metadata.name }}{{ end }}"` -- ls
+  145  vim clear-log.yaml 
+  146  POD_INDEX=1 kubectl exec `kubectl get pod -l "app=sql-server-prod" --template "{{ with index .items 1 }}{{ .metadata.name }}{{ end }}"` -- ls
+  147  POD_INDEX=1 kubectl exec `kubectl get pod -l "app=sql-server-prod" --template "{{ with index .items 0 }}{{ .metadata.name }}{{ end }}"` -- ls
+  148  kubectl exec `kubectl get pod -l "app=sql-server-prod" --template "{{ with index .items 0 }}{{ .metadata.name }}{{ end }}"` -- ls
+  149  vim clear-log.yaml 
+  150  gcloud build submit --config clear-log.yaml
+  151  gcloud builds submit --config clear-log.yaml
+  152  vim clear-log.yaml 
+  153  gcloud builds submit --config clear-log.yaml
+  154  vim clear-log.yaml 
+  155  kubectl exec `kubectl get pod -l app=sql-server-prod --template "{{ with index .items 0}}{{ .metadata.name}}{{ end }}"` -- mkdir /var/opt/mssql/log
+  156  vim clear-log.yaml 
+  157  gcloud builds submit --config clear-log.yaml
+  158  vim clear-log.yaml 
+  159  bash kubectl exec `kubectl get pod -l app=sql-server-prod --template "{{ with index .items 0}}{{ .metadata.name}}{{ end }}"` -- mkdir /var/opt/mssql/log
+  160  vim clear-log.sh
+  161  chmod -700
+  162  chmod -700 clear-log.sh
+  163  bash clear-log.sh
+  164  ls-la
+  165  la -la
+  166  chmod 700 clear-log.sh
+  167  ls -la
+  168  bash clear-log.sh 
+  169  vim clear-log.sh
+  170  bash clear-log.sh sql-server-prod
+  171  vim clear-log.yaml 
+  172  gcloud builds submit --config clear-log.yaml
+  173  vim clear-log.yaml 
+  174  kubectl config view
+  175  vim clear-log.yaml 
+  176  history > history.txt
