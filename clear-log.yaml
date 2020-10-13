@@ -12,15 +12,15 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-local
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Recreate sql-server-local log folder
-    entrypoint: 'bash'
-    args:
-      - recreate-log.sh
-      - sql-server-prod
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+#   - name: 'gcr.io/cloud-builders/kubectl'
+#     id: Recreate sql-server-local log folder
+#     entrypoint: 'bash'
+#     args:
+#       - recreate-log.sh
+#       - sql-server-prod
+#     env:
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
       
   #########################################
@@ -36,15 +36,15 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-dev
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Recreate sql-server-dev log folder
-    entrypoint: 'bash'
-    args:
-      - recreate-log.sh
-      - sql-server-dev
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+#   - name: 'gcr.io/cloud-builders/kubectl'
+#     id: Recreate sql-server-dev log folder
+#     entrypoint: 'bash'
+#     args:
+#       - recreate-log.sh
+#       - sql-server-dev
+#     env:
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
       
   #########################################
@@ -60,15 +60,15 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-stage
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Recreate sql-server-stage log folder
-    entrypoint: 'bash'
-    args:
-      - recreate-log.sh
-      - sql-server-stage
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+#   - name: 'gcr.io/cloud-builders/kubectl'
+#     id: Recreate sql-server-stage log folder
+#     entrypoint: 'bash'
+#     args:
+#       - recreate-log.sh
+#       - sql-server-stage
+#     env:
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
   #########################################
   # Remove log files from sql-server-prod 
@@ -83,12 +83,12 @@ steps:
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-prod
-  - name: 'gcr.io/cloud-builders/kubectl'
-    id: Recreate sql-server-prod log folder
-    entrypoint: 'bash'
-    args:
-      - recreate-log.sh
-      - sql-server-prod
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
+#   - name: 'gcr.io/cloud-builders/kubectl'
+#     id: Recreate sql-server-prod log folder
+#     entrypoint: 'bash'
+#     args:
+#       - recreate-log.sh
+#       - sql-server-prod
+#     env:
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
