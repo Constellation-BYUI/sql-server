@@ -8,7 +8,7 @@ steps:
       - delete-log.sh
       - sql-server-local
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-local
@@ -19,7 +19,7 @@ steps:
 #       - recreate-log.sh
 #       - sql-server-prod
 #     env:
-#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
 #       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
       
@@ -32,7 +32,7 @@ steps:
       - delete-log.sh
       - sql-server-dev
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-dev
@@ -43,7 +43,7 @@ steps:
 #       - recreate-log.sh
 #       - sql-server-dev
 #     env:
-#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
 #       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
       
@@ -56,7 +56,7 @@ steps:
       - delete-log.sh
       - sql-server-stage
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-stage
@@ -67,7 +67,7 @@ steps:
 #       - recreate-log.sh
 #       - sql-server-stage
 #     env:
-#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
 #       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
       
   #########################################
@@ -79,7 +79,7 @@ steps:
       - delete-log.sh
       - sql-server-prod
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 
   # Recreates Log Directory in sql-server-prod
@@ -90,5 +90,5 @@ steps:
 #       - recreate-log.sh
 #       - sql-server-prod
 #     env:
-#       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+#       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
 #       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
