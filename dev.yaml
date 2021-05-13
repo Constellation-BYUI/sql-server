@@ -19,6 +19,7 @@ spec:
       containers:
       - name: sql-server
         image: mcr.microsoft.com/mssql/server:2019-latest
+        command: ["/opt/mssql/bin/sqlservr"]
         ports:
         - containerPort: 1433
           name: sql-server
