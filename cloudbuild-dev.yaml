@@ -19,7 +19,7 @@
   args:
   - run
   - --filename=dev.yaml
-  - --image=mcr.microsoft.com/mssql/server:2019-latest:$_SHORT_SHA
+  - --image=mcr.microsoft.com/mssql/server:2019-latest:
   - --location=us-central1-c
   - --output=/tmp/outputdev
   - --location=us-central1-c
