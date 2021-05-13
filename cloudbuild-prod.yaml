@@ -9,7 +9,7 @@ steps:
     - 'sql-server-prod'
     - '--replicas=0'
   env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'    
 
 
@@ -20,7 +20,7 @@ steps:
   - --filename=prod.yaml
   - --image=gcr.io/$PROJECT_ID/sql-server:$_SHORT_SHA
   - --output=/tmp/outputprod
-  - --location=us-east1-b
+  - --location=us-central1-c
   - --cluster=cluster-1  
 
 # This step starts the database pod
@@ -32,7 +32,7 @@ steps:
     - 'sql-server-prod'
     - '--replicas=1'
   env:
-    - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+    - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
     - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'  
 
 
