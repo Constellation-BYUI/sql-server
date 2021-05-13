@@ -26,7 +26,7 @@ steps:
       - 'sql-server-local'
       - '--replicas=0'
     env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-b'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
   
   # This step deploys to the local environment
@@ -36,9 +36,9 @@ steps:
     - run
     - --filename=local.yaml
     - --image=gcr.io/$PROJECT_ID/sql-server:$SHORT_SHA
-    - --location=us-east1-b
+    - --location=us-central1-c
     - --output=/tmp/outputdev
-    - --location=us-east1-b
+    - --location=us-central1-c
     - --cluster=cluster-1  
 
   # This step scales up the database pod
