@@ -30,7 +30,7 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: prod-sql-server
+              name: sql-server-prod
               key: SA_PASSWORD
         resources:
           limits:
@@ -69,8 +69,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: sql-server-prod
-  annotations:
-    cloud.google.com/load-balancer-type: "Internal"
   labels:
     app: sql-server-prod
 spec:
@@ -79,5 +77,5 @@ spec:
     name: sql-server-prod
   selector:
     app: sql-server-prod
-  type: LoadBalancer  
+  type: LoadBalancer
    

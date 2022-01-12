@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sql-server-local
+  name: sql-server-pre-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sql-server-local
+      app: sql-server-pre-dev
   template:
     metadata:
       labels:
-        app: sql-server-local
+        app: sql-server-pre-dev
     spec:
       securityContext:
         runAsUser: 10001
@@ -30,7 +30,7 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: local-sql-server
+              name: sql-server-dev
               key: SA_PASSWORD
         resources:
           limits:
@@ -40,7 +40,7 @@ spec:
             cpu: "2"
             memory: "4000Mi"
         volumeMounts:
-        - name: sql-server-local
+        - name: sql-server-pre-dev
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -50,14 +50,14 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-local
+      - name: sql-server-pre-dev
         persistentVolumeClaim:
-          claimName: sql-server-local
+          claimName: sql-server-pre-dev
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sql-server-local
+  name: sql-server-pre-dev
 spec:
   accessModes:
     - ReadWriteOnce
@@ -68,14 +68,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sql-server-local
+  name: sql-server-pre-dev
   labels:
-    app: sql-server-local
+    app: sql-server-pre-dev
 spec:
   ports:
   - port: 1433
-    name: sql-server-local
+    name: sql-server-pre-dev
   selector:
-    app: sql-server-local
+    app: sql-server-pre-dev
   type: LoadBalancer
    
