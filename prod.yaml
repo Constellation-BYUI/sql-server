@@ -73,7 +73,8 @@ metadata:
     app: sql-server-prod
 spec:
   ports:
-  - port: 1433
+  - port: 80
+    targetPort: 1433
     name: sql-server-prod
   selector:
     app: sql-server-prod

@@ -31,7 +31,7 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: test-sql-server
+              name: sql-server-test
               key: SA_PASSWORD
         resources:
           limits:
@@ -74,7 +74,8 @@ metadata:
     app: sql-server-test
 spec:
   ports:
-  - port: 1433
+  - port: 80
+    targetPort: 1433
     name: sql-server-test
   selector:
     app: sql-server-test

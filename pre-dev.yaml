@@ -73,7 +73,8 @@ metadata:
     app: sql-server-pre-dev
 spec:
   ports:
-  - port: 1433
+  - port: 80
+    targetPort: 1433
     name: sql-server-pre-dev
   selector:
     app: sql-server-pre-dev
