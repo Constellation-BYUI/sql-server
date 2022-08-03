@@ -63,7 +63,8 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Gi            
+      storage: 15Gi
+  storageClassName: vctr-citwdd-net-sc
 ---
 apiVersion: v1
 kind: Service
