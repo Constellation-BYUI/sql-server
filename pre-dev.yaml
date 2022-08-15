@@ -24,7 +24,7 @@ spec:
           name: sql-server
         env:
         - name: MSSQL_PID
-          value: "Express"
+          value: "Developer"
         - name: ACCEPT_EULA
           value: "Y"
         - name: SA_PASSWORD
