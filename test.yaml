@@ -51,9 +51,9 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-test
+      - name: test-sql-pvc
         persistentVolumeClaim:
-          claimName: sql-server-test
+          claimName: test-sql-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

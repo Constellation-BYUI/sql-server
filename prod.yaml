@@ -50,9 +50,9 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-prod
+      - name: prod-sql-pvc
         persistentVolumeClaim:
-          claimName: sql-server-prod
+          claimName: prod-sql-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
