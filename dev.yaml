@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sql-server-dev
+  namespace: vima-project-dev
 spec:
   replicas: 1
   selector:
@@ -41,7 +42,7 @@ spec:
             cpu: ".9"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-dev
+        - name: dev-sql-pvc
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -58,6 +59,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+ namespace: vima-project-dev
  name: dev-sql-pvc
  labels: 
    app: vima
@@ -73,6 +75,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: vima-project-dev
   name: sql-server-dev
   annotations:
     cloud.google.com/load-balancer-type: "Internal"  

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sql-server-prod
+  namespace: vima-project-prod
 spec:
   replicas: 1
   selector:
@@ -18,7 +19,8 @@ spec:
         fsGroup: 10001
       containers:
       - name: sql-server
-        image: gcr.io/constellation-275522/sql-server
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        command: ["/opt/mssql/bin/sqlservr"]
         ports:
         - containerPort: 1433
           name: sql-server
@@ -40,7 +42,7 @@ spec:
             cpu: ".9"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-prod
+        - name: prod-sql-pvc
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -57,6 +59,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+ namespace: vima-project-prod
  name: prod-sql-pvc
  labels: 
    app: vima
@@ -72,6 +75,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: vima-project-prod
   name: sql-server-prod
   annotations:
     cloud.google.com/load-balancer-type: "Internal"
