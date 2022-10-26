@@ -58,13 +58,17 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sql-server-test
+ name: test-sql-pvc
+ labels: 
+   app: vima
+   tier: backend
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 15Gi            
+ accessModes:
+ - ReadWriteOnce
+ resources:
+   requests:
+     storage: 15Gi
+ storageClassName: vsphere-csi-sc           
 ---
 apiVersion: v1
 kind: Service
