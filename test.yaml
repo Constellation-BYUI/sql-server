@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sql-server-test
+  namespace: vima-project-test
 spec:
   replicas: 1
   selector:
@@ -41,7 +42,7 @@ spec:
             cpu: ".9"
             memory: "2000Mi"
         volumeMounts:
-        - name: sql-server-test
+        - name: test-sql-pvc
           mountPath: /var/opt/mssql
         livenessProbe:
           tcpSocket:
@@ -51,24 +52,30 @@ spec:
         securityContext:
           privileged: true
       volumes:
-      - name: sql-server-test
+      - name: test-sql-pvc
         persistentVolumeClaim:
-          claimName: sql-server-test
+          claimName: test-sql-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sql-server-test
+ namespace: vima-project-test
+ name: test-sql-pvc
+ labels: 
+   app: vima
+   tier: backend
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 15Gi            
+ accessModes:
+ - ReadWriteOnce
+ resources:
+   requests:
+     storage: 15Gi
+ storageClassName: vsphere-csi-sc           
 ---
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: vima-project-test
   name: sql-server-test
   annotations:
     cloud.google.com/load-balancer-type: "Internal"  
